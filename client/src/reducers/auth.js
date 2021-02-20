@@ -3,9 +3,9 @@ import {
 	REGISTER_FAIL,
 	USER_LOADED,
 	AUTH_ERROR,
-	// LOGIN_SUCCESS,
-	// LOGIN_FAIL,
-	// LOGOUT,
+	LOGIN_SUCCESS,
+	LOGIN_FAIL,
+	LOGOUT,
 	// ACCOUNT_DELETED,
 } from '../actions/types';
 
@@ -29,8 +29,8 @@ export default function (state = initialState, action) {
 				user: payload,
 			};
 		case REGISTER_SUCCESS:
+		case LOGIN_SUCCESS:
 			localStorage.setItem('token', payload.token);
-			// case LOGIN_SUCCESS:
 			return {
 				...state,
 				...payload,
@@ -39,8 +39,8 @@ export default function (state = initialState, action) {
 			};
 		case REGISTER_FAIL:
 		case AUTH_ERROR:
-			// case LOGIN_FAIL:
-			// case LOGOUT:
+		case LOGIN_FAIL:
+		case LOGOUT:
 			// case ACCOUNT_DELETED:
 			localStorage.removeItem('token');
 			return {
