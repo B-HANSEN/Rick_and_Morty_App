@@ -6,6 +6,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Profiles from './components/profiles/Profiles';
+import Details from './components/profiles/Details';
 
 // redux related:
 import { Provider } from 'react-redux';
@@ -36,6 +37,7 @@ const App = () => {
 							<Route exact path='/register' component={Register} />
 							<Route exact path='/login' component={Login} />
 							<Route exact path='/profiles' component={Profiles} />
+							<Route exact path='/profiles/:id' component={Details} />
 						</Switch>
 					</section>
 				</>

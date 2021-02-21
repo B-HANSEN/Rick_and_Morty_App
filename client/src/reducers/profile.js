@@ -17,6 +17,7 @@ export default function (state = initialState, action) {
 
 	switch (type) {
 		case GET_PROFILE:
+			console.log('GET SINGLE CHARACTER reducer', payload);
 			return {
 				...state,
 				// response sent back includes the whole profile, add to state:

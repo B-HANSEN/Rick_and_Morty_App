@@ -20,6 +20,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 				<>
 					<h1 className='large text-primary'>Character's view</h1>
 					<p className='lead'>
+						{/* <p>{profiles[0]}</p> */}
 						<i className='fab fa-connectdevelop' /> Browse the characters or
 						choose your favourites
 					</p>
