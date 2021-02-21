@@ -1,10 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+// import { v4 as uuidv4 } from 'uuid';
 
 const ProfileItem = ({
 	profile: { id, name, status, species, location, origin, image },
 }) => {
+	// const linkTarget = {
+	// 	pathname: `/profile/${id}`,
+	// 	key: uuidv4(), // we could use Math.random, but that's not guaranteed unique.
+	// 	state: {
+	// 		applied: true,
+	// 	},
+	// };
 	return (
 		<div className='profile bg-light'>
 			<div>
@@ -26,14 +34,18 @@ const ProfileItem = ({
 					{origin.name}
 				</p>
 				{/* {/* <Link to={`/profile/${_id}`} className='btn btn-primary'> */}
+
 				<Link
-					to={`/profiles/${id}`}
+					to={`/profile/${id}`}
+					// to={linkTarget}
+					key={location.key}
 					className='btn btn-primary'
 					// profile={profile}
 				>
-					{' '}
 					View Character
 				</Link>
+
+				<p>On character page, please click on refresh!!</p>
 			</div>
 		</div>
 	);

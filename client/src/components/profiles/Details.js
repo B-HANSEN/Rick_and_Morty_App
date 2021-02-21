@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
+import { useLocation } from 'react-router-dom';
 
 const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
+	const location = useLocation();
 	useEffect(() => {
 		getProfileById(match.params.id);
-	}, [getProfileById, match.params.id]);
+	}, [getProfileById, match.params.id, location.key]);
 
 	return (
 		<>
@@ -22,6 +25,9 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 						about{profile.name}
 					</p>
 					<div>
+						<Link to='/profiles' className='btn btn-light'>
+							Back to all characters
+						</Link>
 						<div>
 							<img src={profile.image} alt='profileImage' />
 						</div>

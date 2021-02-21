@@ -32,11 +32,11 @@ export const getProfiles = () => async dispatch => {
 };
 
 // get profile by ID
-export const getProfileById = userId => async dispatch => {
+export const getProfileById = id => async dispatch => {
 	try {
 		// const res = await axios.get(`/api/profile/user/${userId}`);
 		const res = await axios.get(
-			`https://rickandmortyapi.com/api/character/${userId}`
+			`https://rickandmortyapi.com/api/character/${id}`
 		);
 
 		dispatch({

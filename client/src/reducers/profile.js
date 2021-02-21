@@ -17,15 +17,12 @@ export default function (state = initialState, action) {
 
 	switch (type) {
 		case GET_PROFILE:
-			console.log('GET SINGLE CHARACTER reducer', payload);
 			return {
 				...state,
-				// response sent back includes the whole profile, add to state:
 				profile: payload,
 				loading: false,
 			};
 		case GET_PROFILES:
-			console.log('GET PROFILES reducer');
 			return {
 				...state,
 				profiles: payload,
@@ -34,7 +31,6 @@ export default function (state = initialState, action) {
 		case PROFILE_ERROR:
 			return {
 				...state,
-				// object with message and status
 				error: payload,
 				loading: false,
 			};
@@ -42,7 +38,6 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				profile: null,
-				repos: [],
 				loading: false,
 			};
 		default:
