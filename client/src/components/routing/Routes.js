@@ -8,7 +8,7 @@ import Profiles from '../profiles/Profiles';
 import Details from '../profiles/Details';
 // import { v4 as uuidv4 } from 'uuid';
 
-const Routes = props => {
+const Routes = () => {
 	return (
 		<section className='container'>
 			<Alert />

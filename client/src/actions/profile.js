@@ -11,16 +11,18 @@ import {
 export const getProfiles = () => async dispatch => {
 	// clean-up prior getting all profiles
 	dispatch({ type: CLEAR_PROFILE });
+	console.log('reach start of action');
 	try {
-		// const res = await axios.get('/api/profile');
+		console.log('reach start of action TRY');
+		// const res = await axios.get('/api/profiles');
 		const res = await axios.get('https://rickandmortyapi.com/api/character');
-
+		console.log('res in actions', res);
 		dispatch({
 			type: GET_PROFILES,
 			payload: res.data.results,
 		});
 	} catch (err) {
-		console.log('from actions error');
+		console.log('from actions error, PROFILE_ERROR');
 		dispatch({
 			type: PROFILE_ERROR,
 			payload: {

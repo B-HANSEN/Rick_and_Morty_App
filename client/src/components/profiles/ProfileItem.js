@@ -14,22 +14,28 @@ const ProfileItem = ({
 	// 	},
 	// };
 	return (
-		<div className='profile bg-light'>
+		<div className='profile bg-dark'>
 			<div>
-				<img src={image} alt='' />
+				<img src={image} alt='characterImage' width='100%' height='100%' />
+			</div>
+			<div className='right'>
 				<h2>{name}</h2>
 
 				<p className='my-1'>
-					{/* if alive: green icon, if dead: red icon */}
+					{status === 'unknown' && <i className='far fa-circle' />}
+					{status === 'Alive' && <i className='fas fa-circle text-success' />}
+					{status === 'Dead' && (
+						<i className='fas fa-circle text-danger' />
+					)}{' '}
 					{status} - {species}
 				</p>
 				<p className='my-1'>
-					Last known location:
+					<span className='item'>Last known location:</span>
 					<br />
 					{location.name}
 				</p>
 				<p className='my-1'>
-					First seen in:
+					<span className='item'>First seen in:</span>
 					<br />
 					{origin.name}
 				</p>
@@ -40,12 +46,11 @@ const ProfileItem = ({
 					// to={linkTarget}
 					key={location.key}
 					className='btn btn-primary'
-					// profile={profile}
 				>
 					View Character
 				</Link>
 
-				<p>On character page, please click on refresh!!</p>
+				{/* <p>Please click on refresh!!</p> */}
 			</div>
 		</div>
 	);

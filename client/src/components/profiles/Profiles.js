@@ -6,33 +6,30 @@ import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
 
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
-	console.log('profiles payload into component', profiles);
+	// console.log('profiles payload into component', profiles);
 	useEffect(() => {
 		getProfiles();
 	}, [getProfiles]);
 
 	return (
 		<>
-			<h1>Characters page</h1>
 			{loading ? (
 				<Spinner />
 			) : (
 				<>
-					<h1 className='large text-primary'>Character's view</h1>
+					<h1 className='large text-primary'>Characters overview</h1>
 					<p className='lead'>
 						<i className='fab fa-connectdevelop' /> Browse the characters or
 						choose your favourites
 					</p>
 					<div className='profiles'>
-						<div className='profiles'>
-							{profiles.length > 0 ? (
-								profiles.map(profile => (
-									<ProfileItem key={profile.id} profile={profile} />
-								))
-							) : (
-								<h4>No profiles found...</h4>
-							)}
-						</div>
+						{profiles.length > 0 ? (
+							profiles.map(profile => (
+								<ProfileItem key={profile.id} profile={profile} />
+							))
+						) : (
+							<h4>No profiles found...</h4>
+						)}
 					</div>
 				</>
 			)}
