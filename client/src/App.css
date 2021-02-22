@@ -356,26 +356,35 @@ button {
 	color: grey;
 }
 
+.favourite {
+	display: flex;
+}
+
+.favourite-star {
+	padding-left: 20px;
+	align-self: 'bottom';
+}
+
 /* Details Page */
 .details {
 	display: flex;
 	justify-content: 'flex-start';
 	align-items: 'center';
-	width: 650px;
+	width: 800px;
 	border-radius: 3%;
 	margin: 1rem;
 }
 
 .details-comments {
-	/* display: flex;
+	display: flex;
 	justify-content: 'flex-start';
 	align-items: 'center';
-	width: 650px; */
-	/* border-radius: 3%; */
+	/* width: 650px; */
+	border-radius: 3%;
 }
 
 .details-photo {
-	/* width: 400px; */
+	width: 400px;
 }
 
 /* Profile Page */

@@ -19,7 +19,12 @@ const ProfileItem = ({
 				<img src={image} alt='characterImage' width='100%' height='100%' />
 			</div>
 			<div className='right'>
-				<h2>{name}</h2>
+				<div className='favourite'>
+					<h2>{name}</h2>
+					<p className='favourite-star'>
+						<i className='fas fa-star' />
+					</p>
+				</div>
 
 				<p className='my-1'>
 					{status === 'unknown' && <i className='far fa-circle' />}

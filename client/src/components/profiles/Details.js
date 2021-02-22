@@ -4,13 +4,29 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getProfileById } from '../../actions/profile';
-import { useLocation } from 'react-router-dom';
+import { addToFavorites } from '../../actions/favorite';
+// import { useLocation } from 'react-router-dom';
 
-const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
-	const location = useLocation();
+const Details = ({
+	getProfileById,
+	addToFavorites,
+	profile: { profile, loading },
+	auth,
+	match,
+}) => {
+	// const location = useLocation();
 	useEffect(() => {
 		getProfileById(match.params.id);
-	}, [getProfileById, match.params.id, location.key]);
+	}, [
+		getProfileById,
+		match.params.id,
+		//  location.key
+	]);
+
+	const handleClick = async auth => {
+		debugger;
+		await addToFavorites(profile.id, auth.user._id);
+	};
 
 	return (
 		<>
@@ -18,16 +34,14 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 				<Spinner />
 			) : (
 				<div className='details-page'>
-					<div className=''>
-						<div>
-							<h1 className='large text-primary'>Character's detail view</h1>
-							<p className='lead'>
-								<i className='fab fa-connectdevelop' /> Here you can find more
-								details about {profile.name}
-							</p>
-						</div>
-						<div></div>
+					<div>
+						<h1 className='large text-primary'>Character's detail view</h1>
+						<p className='lead'>
+							<i className='fab fa-connectdevelop' /> Here you can find more
+							details about {profile.name}
+						</p>
 					</div>
+
 					<div className='details bg-dark'>
 						<div className='details-photo'>
 							<img
@@ -38,7 +52,13 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 							/>
 						</div>
 						<div className='details-right'>
-							<div className='my-1'>{profile.name}</div>
+							<div className='favourite'>
+								<h2 className='my-1'>{profile.name}</h2>
+								<p className='favourite-star my-1'>
+									<i className='far fa-star' />
+								</p>
+							</div>
+
 							<div className='my-1'>
 								{profile.status === 'unknown' && (
 									<i className='far fa-circle' />
@@ -52,7 +72,6 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 								{profile.status} - {profile.species}
 							</div>
 							<div className='my-1'>{profile.gender}</div>
-							{/* <div className='my-1'>{profile.species}</div> */}
 							<div className='my-1'>
 								<span className='item'>First seen in:</span>
 								<br />
@@ -68,6 +87,7 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 					<Link to='/profiles' className='btn btn-light'>
 						Return to characters overview
 					</Link>
+					<button onClick={e => handleClick(auth)}>Add to favorites</button>
 				</div>
 			)}
 		</>
@@ -76,11 +96,17 @@ const Details = ({ getProfileById, profile: { profile, loading }, match }) => {
 
 Details.propTypes = {
 	getProfileById: PropTypes.func.isRequired,
+	addToFavorites: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
+	// favorite: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
 	profile: state.profile,
+	favorite: state.favorite,
+	auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getProfileById })(Details);
+export default connect(mapStateToProps, { addToFavorites, getProfileById })(
+	Details
+);

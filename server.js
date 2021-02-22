@@ -15,6 +15,8 @@ app.get('/', (req, res) => res.send('API Running'));
 // define routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
+// add profile route to enable consumption of API frmo backend
+app.use('/api/favorites', require('./routes/api/favorites'));
 
 // looks for an env variable called PORT;
 const PORT = process.env.PORT || 5000;
