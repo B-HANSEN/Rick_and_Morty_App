@@ -16,7 +16,7 @@ const Routes = () => {
 				<Route exact path='/register' component={Register} />
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/profiles' component={Profiles} />
-				<Route exact path='/profile/:id' component={Details} />
+				<Route exact path='/profiles/:id' component={Details} />
 				<Route component={NotFound} />
 			</Switch>
 		</section>

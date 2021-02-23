@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getProfiles } from '../../actions/profile';
+import { loadUser } from '../../actions/auth';
 // import { v4 as uuidv4 } from 'uuid';
 
 const ProfileItem = ({
-	profile: { id, name, status, species, location, origin, image },
+	profile: { profile, id, name, status, species, location, origin, image },
+	auth,
 }) => {
 	// const linkTarget = {
 	// 	pathname: `/profile/${id}`,
@@ -13,6 +17,10 @@ const ProfileItem = ({
 	// 		applied: true,
 	// 	},
 	// };
+	// useEffect(() => {
+	// 	getProfiles();
+	// 	loadUser();
+	// }, [getProfiles, loadUser]);
 	return (
 		<div className='profile bg-dark'>
 			<div>
@@ -22,7 +30,11 @@ const ProfileItem = ({
 				<div className='favourite'>
 					<h2>{name}</h2>
 					<p className='favourite-star'>
-						<i className='fas fa-star' />
+						{auth?.user?.favorites.includes(profile?.id) ? (
+							<i className='fas fa-star' />
+						) : (
+							<i className='far fa-star' />
+						)}
 					</p>
 				</div>
 
@@ -44,25 +56,33 @@ const ProfileItem = ({
 					<br />
 					{origin.name}
 				</p>
-				{/* {/* <Link to={`/profile/${_id}`} className='btn btn-primary'> */}
-
-				<Link
-					to={`/profile/${id}`}
-					// to={linkTarget}
-					key={location.key}
-					className='btn btn-primary'
-				>
-					View Character
-				</Link>
-
 				{/* <p>Please click on refresh!!</p> */}
+				<div className='character-link'>
+					<Link
+						to={`/profiles/${id}`}
+						// to={linkTarget}
+						key={location.key}
+						className='btn btn-primary'
+					>
+						View Character
+					</Link>
+				</div>
 			</div>
 		</div>
 	);
 };
 
 ProfileItem.propTypes = {
+	// loadUser: PropTypes.func.isRequired,
+	// getProfiles: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired,
 };
 
+// const mapStateToProps = state => ({
+// 	profile: state.profile,
+// 	auth: state.auth,
+// });
+
+// export default connect(mapStateToProps, { loadUser, getProfiles })(ProfileItem);
 export default ProfileItem;

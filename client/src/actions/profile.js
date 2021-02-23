@@ -1,5 +1,7 @@
 import axios from 'axios';
+import { loadUser } from './auth';
 // import { setAlert } from './alert';
+
 import {
 	GET_PROFILE,
 	GET_PROFILES,
@@ -16,6 +18,7 @@ export const getProfiles = () => async dispatch => {
 			type: GET_PROFILES,
 			payload: res.data.results,
 		});
+		// dispatch(loadUser());
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,
@@ -30,7 +33,7 @@ export const getProfiles = () => async dispatch => {
 // get profile by ID
 export const getProfileById = id => async dispatch => {
 	try {
-		// const res = await axios.get(`/api/profile/user/${userId}`);
+		// const res = await axios.get(`/api/profiles/user/${userId}`);
 		const res = await axios.get(
 			`https://rickandmortyapi.com/api/character/${id}`
 		);
@@ -38,6 +41,7 @@ export const getProfileById = id => async dispatch => {
 			type: GET_PROFILE,
 			payload: res.data,
 		});
+		dispatch(loadUser());
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,

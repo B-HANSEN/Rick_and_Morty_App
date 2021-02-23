@@ -2,6 +2,7 @@ import {
 	GET_FAVORITES,
 	FAVORITES_LOADING,
 	ADD_FAVORITE,
+	// REMOVE_FAVORITE,
 	FAVORITES_ERROR,
 } from '../actions/types';
 
@@ -31,8 +32,15 @@ export default function (state = initialState, action) {
 		case ADD_FAVORITE:
 			return {
 				...state,
-				favorites: action.payload,
+				favorites: payload,
 			};
+		// case REMOVE_FAVORITE:
+		// 	return {
+		// 		...state,
+		// 		favorites: state.favorites.filter(
+		// 			favorite => favorite.id !== action.payload
+		// 		),
+		// 	};
 		case FAVORITES_ERROR:
 			return {
 				...state,
