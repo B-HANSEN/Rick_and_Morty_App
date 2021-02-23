@@ -6,7 +6,6 @@ import Alert from '../layout/Alert';
 import NotFound from '../layout/NotFound';
 import Profiles from '../profiles/Profiles';
 import Details from '../profiles/Details';
-// import { v4 as uuidv4 } from 'uuid';
 
 const Routes = () => {
 	return (

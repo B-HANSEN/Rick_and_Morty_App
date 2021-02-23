@@ -1,26 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getProfiles } from '../../actions/profile';
-import { loadUser } from '../../actions/auth';
-// import { v4 as uuidv4 } from 'uuid';
 
 const ProfileItem = ({
 	profile: { profile, id, name, status, species, location, origin, image },
 	auth,
 }) => {
-	// const linkTarget = {
-	// 	pathname: `/profile/${id}`,
-	// 	key: uuidv4(), // we could use Math.random, but that's not guaranteed unique.
-	// 	state: {
-	// 		applied: true,
-	// 	},
-	// };
-	// useEffect(() => {
-	// 	getProfiles();
-	// 	loadUser();
-	// }, [getProfiles, loadUser]);
 	return (
 		<div className='profile bg-dark'>
 			<div>
@@ -60,7 +45,6 @@ const ProfileItem = ({
 				<div className='character-link'>
 					<Link
 						to={`/profiles/${id}`}
-						// to={linkTarget}
 						key={location.key}
 						className='btn btn-primary'
 					>
@@ -73,16 +57,8 @@ const ProfileItem = ({
 };
 
 ProfileItem.propTypes = {
-	// loadUser: PropTypes.func.isRequired,
-	// getProfiles: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
 	auth: PropTypes.object.isRequired,
 };
 
-// const mapStateToProps = state => ({
-// 	profile: state.profile,
-// 	auth: state.auth,
-// });
-
-// export default connect(mapStateToProps, { loadUser, getProfiles })(ProfileItem);
 export default ProfileItem;

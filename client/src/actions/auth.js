@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
+import setAuthToken from '../utils/setAuthToken';
 import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -10,7 +11,6 @@ import {
 	LOGOUT,
 	CLEAR_PROFILE,
 } from './types';
-import setAuthToken from '../utils/setAuthToken';
 
 // Load user
 export const loadUser = () => async dispatch => {
@@ -22,7 +22,6 @@ export const loadUser = () => async dispatch => {
 		const res = await axios.get('/api/auth');
 		dispatch({
 			type: USER_LOADED,
-			// res.data is the user from that router
 			payload: res.data,
 		});
 	} catch (err) {
@@ -39,7 +38,6 @@ export const register = ({ name, email, password }) => async dispatch => {
 			'Content-Type': 'application/json',
 		},
 	};
-	// prepare data to send
 	const body = JSON.stringify({ name, email, password });
 
 	try {
@@ -67,7 +65,6 @@ export const login = (email, password) => async dispatch => {
 			'Content-Type': 'application/json',
 		},
 	};
-	// prepare data to send
 	const body = JSON.stringify({ email, password });
 
 	try {

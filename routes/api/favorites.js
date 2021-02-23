@@ -31,23 +31,4 @@ router.put('/:id', function (req, res) {
 	}
 });
 
-//   newItem.save().then(item => res.json(item));
-
-// @route   DELETE api/favorites 1 favorite (by favId) for 1 user (by id)
-// @desc    Delete favs
-// @access  Public
-// router.delete('/:id/:favId', function (req, res) {
-// 	try {
-// 		User.updateOne(
-// 			{ _id: req.params.id },
-// 			{ $pull: { favorites: req.params.favId } }
-// 		).then(function () {
-// 			res.send({ msg: 'delete done' });
-// 		});
-// 	} catch (err) {
-// 		console.log(err.message);
-// 		res.status(500).send('Server error.');
-// 	}
-// });
-
 module.exports = router;

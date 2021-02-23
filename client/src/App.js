@@ -5,7 +5,6 @@ import Landing from './components/layout/Landing';
 import Routes from './components/routing/Routes';
 import { LOGOUT } from './actions/types';
 
-// redux related:
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
@@ -20,7 +19,6 @@ import './App.css';
 
 const App = () => {
 	useEffect(() => {
-		// check for token in LS
 		if (localStorage.token) {
 			setAuthToken(localStorage.token);
 		}

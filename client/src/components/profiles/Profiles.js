@@ -10,8 +10,11 @@ import { loadUser } from '../../actions/auth';
 const Profiles = ({ getProfiles, profile: { profiles, loading }, auth }) => {
 	useEffect(() => {
 		getProfiles();
-		loadUser();
-	}, [getProfiles, loadUser]);
+		// loadUser();
+	}, [
+		getProfiles,
+		// loadUser
+	]);
 
 	return (
 		<>

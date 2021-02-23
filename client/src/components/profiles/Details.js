@@ -5,38 +5,28 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { loadUser } from '../../actions/auth';
 import { getProfileById } from '../../actions/profile';
-import {
-	getFavorites,
-	addToFavorites,
-	removeFromFavorites,
-} from '../../actions/favorite';
+import { addToFavorites } from '../../actions/favorite';
 import formatDate from '../../utils/formatDate';
-// import { useLocation } from 'react-router-dom';
 
 const Details = ({
 	getProfileById,
-	getFavorites,
 	addToFavorites,
-	removeFromFavorites,
 	profile: { profile, loading },
 	auth,
 	match,
 }) => {
-	// const { _id, favorites } = auth.user;
-	// const location = useLocation();
 	useEffect(() => {
-		loadUser();
+		// loadUser();
 		getProfileById(match.params.id);
-	}, [loadUser, getProfileById, match.params.id]);
+	}, [
+		// loadUser,
+		getProfileById,
+		match.params.id,
+	]);
 
 	const handleAdding = async auth => {
-		// await addToFavorites(profile.id, auth.user._id);
 		await addToFavorites(profile.id, auth.user._id);
 	};
-
-	// const handleRemoving = async auth => {
-	// 	await removeFromFavorites(auth.user._id, profile.id);
-	// };
 
 	return (
 		<>
@@ -139,23 +129,17 @@ const Details = ({
 Details.propTypes = {
 	loadUser: PropTypes.func.isRequired,
 	getProfileById: PropTypes.func.isRequired,
-	// getFavorites: PropTypes.func.isRequired,
 	addToFavorites: PropTypes.func.isRequired,
-	removeFromFavorites: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
-	// favorite: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
 	profile: state.profile,
-	// favorite: state.favorite,
 	auth: state.auth,
 });
 
 export default connect(mapStateToProps, {
 	loadUser,
 	getProfileById,
-	getFavorites,
 	addToFavorites,
-	removeFromFavorites,
 })(Details);
