@@ -9,7 +9,7 @@ const Favorites = ({ getFavorites, auth: { user } }) => {
 	useEffect(() => {
 		loadUser();
 		getFavorites();
-	}, [loadUser, getFavorites]);
+	}, [getFavorites]);
 
 	return (
 		<>

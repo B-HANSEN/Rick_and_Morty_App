@@ -20,8 +20,8 @@ Functionality:
 - In single character view, character can be added to favorites list which disables the button, provides a note, renders a success alert and fills the star
 - 404 page available
 - My Favorites view, showing list of favorite characters
-- Login functionaility
-- Register functionality
+- Login functionality: use 'test@mail.com' & 'test123' as login credentials which has a few preselected favorites
+- Register functionality: or register a new user
 
 Additional dependencies installed:
 

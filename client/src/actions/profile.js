@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { loadUser } from './auth';
-
 import {
 	GET_PROFILE,
 	GET_PROFILES,
@@ -17,7 +15,6 @@ export const getProfiles = () => async dispatch => {
 			type: GET_PROFILES,
 			payload: res.data.results,
 		});
-		// dispatch(loadUser()); // refresh loadUser() is irrelevant here
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,
@@ -39,7 +36,6 @@ export const getProfileById = id => async dispatch => {
 			type: GET_PROFILE,
 			payload: res.data,
 		});
-		// dispatch(loadUser());
 	} catch (err) {
 		dispatch({
 			type: PROFILE_ERROR,

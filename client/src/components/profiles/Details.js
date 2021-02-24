@@ -19,7 +19,7 @@ const Details = ({
 	useEffect(() => {
 		loadUser();
 		getProfileById(match.params.id);
-	}, [loadUser, getProfileById, match.params.id]);
+	}, [getProfileById, match.params.id]);
 
 	const handleAdding = async user => {
 		await addToFavorites(profile.id, profile.name, user._id);

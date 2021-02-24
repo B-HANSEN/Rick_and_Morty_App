@@ -16,11 +16,6 @@ const store = createStore(
 
 // set up a store subscription listener
 // to store the user's token in localStorage
-
-// prevent auth error on first run of subscription
-// let currentState = {
-// 	auth: { token: null, isAuthenticated: null, loading: true, user: null },
-// };
 let currentState = store.getState();
 
 store.subscribe(() => {
