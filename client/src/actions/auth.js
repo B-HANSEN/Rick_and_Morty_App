@@ -14,7 +14,6 @@ import {
 
 // Load user
 export const loadUser = () => async dispatch => {
-	// to delete:
 	if (localStorage.token) {
 		setAuthToken(localStorage.token);
 	}

@@ -41,7 +41,6 @@ const ProfileItem = ({
 					<br />
 					{origin.name}
 				</p>
-				{/* <p>Please click on refresh!!</p> */}
 				<div className='character-link'>
 					<Link
 						to={`/profiles/${id}`}

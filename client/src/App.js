@@ -12,11 +12,6 @@ import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
 
-// in Brad's version, this is in the App function
-// if (localStorage.token) {
-// 	setAuthToken(localStorage.token);
-// }
-
 const App = () => {
 	useEffect(() => {
 		if (localStorage.token) {

@@ -24,7 +24,7 @@ export const getFavorites = id => async dispatch => {
 			type: GET_FAVORITES,
 			payload: res.data,
 		});
-		dispatch(loadUser());
+		// dispatch(loadUser());
 	} catch (err) {
 		dispatch({
 			type: FAVORITES_ERROR,

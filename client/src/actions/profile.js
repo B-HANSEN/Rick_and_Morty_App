@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { loadUser } from './auth';
-// import { setAlert } from './alert';
 
 import {
 	GET_PROFILE,

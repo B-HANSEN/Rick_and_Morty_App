@@ -26,6 +26,7 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				favorites: payload,
+				loading: false,
 			};
 		case ADD_FAVORITE:
 			return {
@@ -33,7 +34,6 @@ export default function (state = initialState, action) {
 				favorites: payload,
 			};
 		case REMOVE_FAVORITE:
-			debugger;
 			return {
 				...state,
 				favorites: state.favorites.filter(favorite => favorite._id !== payload),

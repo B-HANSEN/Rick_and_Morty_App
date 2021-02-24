@@ -51,7 +51,7 @@ const Details = ({
 					</div>
 
 					<div className='details bg-dark'>
-						<div className='details-photo'>
+						<div>
 							<img src={profile.image} alt='profileImage' />
 							<div className='favourite'>
 								<h2 className='detail-name my-1'>
