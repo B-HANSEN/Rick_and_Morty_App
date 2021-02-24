@@ -1,6 +1,6 @@
 Rick & Morty application
 submitted by: Bjoern Hansen
-date submitted: Wed 24-Feb 2021
+date: Wed 24-Feb 2021
 
 Notes:
 
