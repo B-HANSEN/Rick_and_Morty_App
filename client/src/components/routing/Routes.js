@@ -6,6 +6,7 @@ import Alert from '../layout/Alert';
 import NotFound from '../layout/NotFound';
 import Profiles from '../profiles/Profiles';
 import Details from '../profiles/Details';
+import Favorites from '../profiles/Favorites';
 
 const Routes = () => {
 	return (
@@ -16,6 +17,7 @@ const Routes = () => {
 				<Route exact path='/login' component={Login} />
 				<Route exact path='/profiles' component={Profiles} />
 				<Route exact path='/profiles/:id' component={Details} />
+				<Route exact path='/favorites' component={Favorites} />
 				<Route component={NotFound} />
 			</Switch>
 		</section>

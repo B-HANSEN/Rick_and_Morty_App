@@ -11,22 +11,22 @@ import formatDate from '../../utils/formatDate';
 const Details = ({
 	getProfileById,
 	addToFavorites,
+	removeFromFavorites,
 	profile: { profile, loading },
-	auth,
+	auth: { user },
 	match,
 }) => {
 	useEffect(() => {
-		// loadUser();
+		loadUser();
 		getProfileById(match.params.id);
-	}, [
-		// loadUser,
-		getProfileById,
-		match.params.id,
-	]);
+	}, [loadUser, getProfileById, match.params.id]);
 
-	const handleAdding = async auth => {
-		await addToFavorites(profile.id, auth.user._id);
+	const handleAdding = async user => {
+		await addToFavorites(profile.id, profile.name, user._id);
 	};
+	// const handleRemove = async auth => {
+	// 	await removeFromFavorites(profile.id, auth.user._id);
+	// };
 
 	return (
 		<>
@@ -41,7 +41,7 @@ const Details = ({
 							details about {profile.name}
 						</p>
 						<div>
-							{auth?.user?.favorites?.includes(profile.id) ? (
+							{user?.favorites?.includes(profile.name) ? (
 								<p className='text-note'>
 									Note: This character has already been added to your favorites
 									list.
@@ -60,7 +60,7 @@ const Details = ({
 										: profile.name}
 								</h2>
 								<p className='favourite-star my-1'>
-									{auth?.user?.favorites.includes(profile.id) ? (
+									{user?.favorites.includes(profile.name) ? (
 										<i className='fas fa-star' />
 									) : (
 										<i className='far fa-star' />
@@ -108,10 +108,10 @@ const Details = ({
 					<Link to='/profiles' className='btn btn-primary'>
 						Return to characters overview
 					</Link>
-					{!auth?.user?.favorites?.includes(profile.id) ? (
+					{!user?.favorites.includes(profile.name) ? (
 						<button
 							className='btn btn-primary'
-							onClick={e => handleAdding(auth)}
+							onClick={e => handleAdding(user)}
 						>
 							Add to favorites
 						</button>
@@ -130,6 +130,7 @@ Details.propTypes = {
 	loadUser: PropTypes.func.isRequired,
 	getProfileById: PropTypes.func.isRequired,
 	addToFavorites: PropTypes.func.isRequired,
+	// removeFromFavorites: PropTypes.func.isRequired,
 	profile: PropTypes.object.isRequired,
 };
 
@@ -142,4 +143,5 @@ export default connect(mapStateToProps, {
 	loadUser,
 	getProfileById,
 	addToFavorites,
+	// removeFromFavorites,
 })(Details);

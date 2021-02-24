@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const ProfileItem = ({
-	profile: { profile, id, name, status, species, location, origin, image },
-	auth,
+	profile: { id, name, status, species, location, origin, image },
+	auth: { user },
 }) => {
 	return (
 		<div className='profile bg-dark'>
@@ -15,7 +15,7 @@ const ProfileItem = ({
 				<div className='favourite'>
 					<h2>{name}</h2>
 					<p className='favourite-star'>
-						{auth?.user?.favorites.includes(profile?.id) ? (
+						{user?.favorites.includes(name) ? (
 							<i className='fas fa-star' />
 						) : (
 							<i className='far fa-star' />

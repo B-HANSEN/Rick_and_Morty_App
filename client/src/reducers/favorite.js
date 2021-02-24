@@ -1,6 +1,8 @@
 import {
 	FAVORITES_LOADING,
+	GET_FAVORITES,
 	ADD_FAVORITE,
+	REMOVE_FAVORITE,
 	FAVORITES_ERROR,
 } from '../actions/types';
 
@@ -20,12 +22,23 @@ export default function (state = initialState, action) {
 				...state,
 				loading: true,
 			};
+		case GET_FAVORITES:
+			return {
+				...state,
+				favorites: payload,
+			};
 		case ADD_FAVORITE:
 			return {
 				...state,
 				favorites: payload,
 			};
-
+		case REMOVE_FAVORITE:
+			debugger;
+			return {
+				...state,
+				favorites: state.favorites.filter(favorite => favorite._id !== payload),
+				loading: false,
+			};
 		case FAVORITES_ERROR:
 			return {
 				...state,
